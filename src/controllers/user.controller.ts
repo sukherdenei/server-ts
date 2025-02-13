@@ -3,11 +3,8 @@ import { users } from "../database/user.db";
 
 export const register: RequestHandler = (req: Request, res: Response) => {
   const { name, email, password } = req.body;
-
   const findUser = users.find((user) => user.email === email);
-
   const findUserName = users.find((user) => user.name === name);
-  // if(findUserName)
 
   const lasUser = users[users.length - 1];
   const newUserId = lasUser?._id ? Number(lasUser._id) + 1 : 1;
