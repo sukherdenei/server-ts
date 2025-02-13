@@ -15,5 +15,5 @@ app.post("/user/register", register);
 app.post("/user/login", login);
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port${port}`);
 });
