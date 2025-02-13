@@ -25,9 +25,20 @@ export const Register = (req: Request, res: Response) => {
   return;
 };
 
-const Login: RequestHandler = (request, response) => {
-  const { name, password } = request.body;
-  const checkUser = users.find((user) => user.name == name);
+export const Login: RequestHandler = (request, response) => {
+  const { email, password } = request.body;
+
+  const checkUser = users.find((user) => user.email == email);
+  if (!checkUser) {
+    response.send("Invalid email ");
+    return;
+  }
+  if (checkUser.password !== password) {
+    response.send("Invalid password");
+    return;
+  }
+  response.send(`Login succesfully,${checkUser._id}`);
+
   if (checkUser && checkUser.password === password) {
     response.send("Хэрэглэгч та амжилттай нэвтэрлээ");
   } else {
