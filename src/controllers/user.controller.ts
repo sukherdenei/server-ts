@@ -56,14 +56,15 @@ export const GetProfile = (req: Request, res: Response) => {
 };
 
 export const GetUpdate = (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
+  const { name, email } = req.body;
   const { id } = req.params;
-  let findUser = users.find((user) => user._id === id);
-  if (!findUser) {
-    res.send("User not found");
+  let findUser = users.find((user) => user._id == id);
+  if (findUser) {
+    findUser.name = name;
+    findUser.email = email;
+    res.send(findUser);
+    return;
   }
-  const profileEdit = { ...findUser, name, email, password };
-  res.send(profileEdit);
 };
 
 module.exports = {

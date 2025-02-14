@@ -12,6 +12,6 @@ userRoute
   .post("/register", Register)
   .post("/login", Login)
   .post("/getProfile/:id", GetProfile)
-  .put("/getUpdate", GetUpdate);
+  .put("/getUpdate/:id", GetUpdate);
 
 export { userRoute };
