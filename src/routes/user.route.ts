@@ -1,8 +1,17 @@
 import { Router } from "express";
-import { Login, Register } from "../controllers/user.controller";
+import {
+  GetProfile,
+  GetUpdate,
+  Login,
+  Register,
+} from "../controllers/user.controller";
 
 const userRoute = Router();
 
-userRoute.post("/regiser", Register).post("/login", Login);
+userRoute
+  .post("/register", Register)
+  .post("/login", Login)
+  .post("/getProfile/:id", GetProfile)
+  .put("/getUpdate", GetUpdate);
 
 export { userRoute };
